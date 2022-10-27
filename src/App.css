@@ -11,6 +11,13 @@ h3 {
   text-transform: uppercase;
 }
 
+li {
+  list-style: none;
+  display: inline;
+  font-weight: 500;
+  padding-right: 10px;
+}
+
 button {
   background-color: #f42f4c;
   color: whitesmoke;
@@ -109,12 +116,20 @@ select:focus {
 .languages li {
   list-style: none;
   display: inline;
-  font-weight: 500;
-  padding-right: 10px;
+  border: none;
+  font-weight: 400;
+  /* padding-right: 20px; */
+  background-color: white;
+  color: #fb5858;
 }
+.languages li:nth-child(3) {
+  margin-right: 20px;
+}
+
 .header-wrap-main {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .calc-wrap {
@@ -124,6 +139,7 @@ select:focus {
 }
 .calc-wrap-labels {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   margin-top: 35px;
@@ -135,6 +151,8 @@ select:focus {
 }
 .calc-wrap-main {
   display: flex;
+  flex-wrap: wrap;
+
   /* height: 80px; */
   justify-content: space-between;
   /* align-items: center; */
@@ -156,4 +174,57 @@ select:focus {
 }
 #submit-button {
   margin-right: 25px;
+}
+
+.result {
+  /* border: 1px solid red; */
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  margin: 1% 15%;
+}
+.result-top {
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.result-top h2 {
+  width: 70%;
+}
+
+.result-top-right {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  /* background-color: red; */
+}
+.nav-item {
+  border-radius: 10px;
+  /* border: 1px solid black; */
+  padding: 8px 10px;
+  color: white;
+  font-weight: 400;
+  background-color: green;
+}
+.nav-item:hover {
+  background-color: rgb(23, 29, 33);
+  cursor: pointer;
+}
+
+.nav-item:active {
+  background-color: aliceblue;
+}
+
+/* Solid border */
+hr.solid {
+  border-top: 1px solid green;
+}
+
+.result-main {
+  margin-top: 2%;
+  background-color: white;
+  border-radius: 10px;
 }

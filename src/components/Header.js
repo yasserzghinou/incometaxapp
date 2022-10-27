@@ -12,9 +12,9 @@ const Header = (props) => {
           <h3>daribti</h3>
         </div>
         <ul className="languages">
-          <li>Francais</li>
-          <li>|</li>
-          <li>Arabe</li>
+          <li className="nav-item">Francais</li>
+          <li></li>
+          <li className="nav-item">Arabe</li>
         </ul>
       </div>
 
