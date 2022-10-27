@@ -25,9 +25,11 @@ const Salarycalc = (props) => {
           type="number"
           placeholder="Salaire en dirhams (MAD)"
           step="1000"
-          value={Math.abs(salary)}
+          // value={Math.abs(salary)}
+          value={salary}
           onChange={(e) => {
             setSalary(e.target.value);
+
             // console.log(salary);
           }}
           required
