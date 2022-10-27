@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Salarycalc from "./Salarycalc";
 import logo from "/home/olsein/Projects/app01/src/medias/img/lion-svgrepo-com.svg";
 import flag from "/home/olsein/Projects/app01/src/medias/img/flag-for-morocco-svgrepo-com.svg";
@@ -21,7 +21,7 @@ const Header = (props) => {
       <div className="header-wrap-main">
         <div className="calc-wrap">
           <div className="calc-wrap-top">
-            <h1> Calculateur d'Impôts sur Salaire au Maroc</h1>
+            <h1> Calcul d'Impôts sur Salaire pour le Maroc</h1>
             <p>
               Estimez le montant de votre salaire brut / net. Calculez votre
               impôts sur le revenu (I.R)

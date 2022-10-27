@@ -1,4 +1,20 @@
+import React, { useContext, useState } from "react";
+import SalaryContext from "./SalaryContext";
+
 const Result = (props) => {
+  const { value1, value2 } = useContext(SalaryContext);
+  const [salary, setSalary] = value1;
+  const [selector, setSelector] = value2;
+  const [tax, setTax] = useState(0);
+
+  //helper function to calculate the tax
+  const taxCalc = (salary) => {
+    if (salary < 30000) {
+      return 0;
+    } else {
+      return salary / 2;
+    }
+  };
   return (
     <div className="result">
       <div className="result-top">
@@ -35,8 +51,8 @@ const Result = (props) => {
           <div className="result-main-left-results">
             <h3>(MAD)</h3>
             <hr class="solid-white"></hr>
-            <h4>10,000 DHS</h4>
-            <p className="result-subtext">- 200 DHS</p>
+            <h4>{salary} DHS</h4>
+            <p className="result-subtext">- {tax} DHS</p>
             <p className="result-subtext">- 300 DHS</p>
             <p className="result-subtext">- 510 DHS</p>
             <hr class="solid-white"></hr>
