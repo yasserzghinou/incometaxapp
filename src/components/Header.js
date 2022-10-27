@@ -21,10 +21,10 @@ const Header = (props) => {
       <div className="header-wrap-main">
         <div className="calc-wrap">
           <div className="calc-wrap-top">
-            <h1> Calcul du salaire brut / net pour le Maroc</h1>
+            <h1> Calculateur d'Impôts sur Salaire au Maroc</h1>
             <p>
-              Estimez le montant de votre salaire brut / net. Calculer votre
-              impot sur le revenu (I.R)
+              Estimez le montant de votre salaire brut / net. Calculez votre
+              impôts sur le revenu (I.R)
             </p>
           </div>
           {/* this is a component Salarycalc.js */}
