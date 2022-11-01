@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import SalaryContext from "./SalaryContext";
 import { math, derivative, sin } from "mathjs";
+import Pie from "./Pie";
 
 const Result = (props) => {
   const { value1, value2 } = useContext(SalaryContext);
@@ -175,13 +176,22 @@ const Result = (props) => {
           </div>
         </div>
         <div className="result-main-right">
-          <p>,,,,,,,, ,,,,,,,,</p>
-          <p>,,,,,,,, ,,,,,,,,</p>
-          <p>,,,,,,,, ,,,,,,,,</p>
-          <p>,,,,,,,, ,,,,,,,,</p>
-          <p>,,,,,,,, ,,,,,,,,</p>
-          <p>,,,,,,,, ,,,,,,,,</p>
-          <p>,,,,,,,, ,,,,,,,,</p>
+          <Pie
+            data={[
+              {
+                id: "Salaire Net",
+                label: "Salaire Net",
+                value: 94,
+                color: "hsl(341, 70%, 50%)"
+              },
+              {
+                id: "Impôt",
+                label: "Impôt",
+                value: 6,
+                color: "hsl(138, 70%, 50%)"
+              }
+            ]}
+          />
         </div>
       </div>
     </div>

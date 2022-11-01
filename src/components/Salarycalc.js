@@ -45,7 +45,7 @@ const Salarycalc = (props) => {
           <option value="year">Année</option>
           <option value="month">Mois</option>
         </select>
-        <button id="submit-button">Calculer</button>
+        {/* <button id="submit-button">Calculer</button> */}
       </div>
     </div>
   );
