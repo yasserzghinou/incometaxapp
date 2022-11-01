@@ -221,8 +221,14 @@ select:focus {
   cursor: pointer;
 }
 
-.nav-item:active {
-  background-color: aliceblue;
+/* Style the active class  */
+.active {
+  border-radius: 10px;
+  background-color: #666;
+  padding: 8px 25px;
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
 }
 
 /* Solid border */

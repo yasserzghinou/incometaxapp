@@ -14,9 +14,13 @@ const Result = (props) => {
   const [fsalary, setFsalary] = useState("");
   const [tmarginal, setTmarginal] = useState(0);
   const [tmoyen, setTmoyen] = useState(0);
+  const [timeframe, setTimeframe] = useState(selector);
+  const [hoveredItem, setHoveredItem] = useState(timeframe);
+  const resetHover = () => setHoveredItem("");
 
   const AMO = 0.0226;
-
+  const dSalary = salary / 365;
+  const mSalary = salary / 12;
   //Helper Functions to calculate the tax & CNSS
   // Tax calc function
   const taxCalc = (salary) => {
@@ -65,13 +69,31 @@ const Result = (props) => {
 
   // Main function to calculate all taxes using above helper functions
   const runCalculations = (salary) => {
-    taxCalc(salary);
-    cnssCalc(salary);
-    amoCalc(salary);
-    irCalc(salary);
-    netSalaryCalc(salary);
-    tauxMarginal(salary);
-    tauxMoyen(salary);
+    if (timeframe == "month") {
+      taxCalc(mSalary);
+      cnssCalc(mSalary);
+      amoCalc(mSalary);
+      irCalc(mSalary);
+      netSalaryCalc(mSalary);
+      tauxMarginal(mSalary);
+      tauxMoyen(mSalary);
+    } else if (timeframe == "day") {
+      taxCalc(dSalary);
+      cnssCalc(dSalary);
+      amoCalc(dSalary);
+      irCalc(dSalary);
+      netSalaryCalc(dSalary);
+      tauxMarginal(dSalary);
+      tauxMoyen(dSalary);
+    } else {
+      taxCalc(salary);
+      cnssCalc(salary);
+      amoCalc(salary);
+      irCalc(salary);
+      netSalaryCalc(salary);
+      tauxMarginal(salary);
+      tauxMoyen(salary);
+    }
   };
 
   //useEffect hook used to update the DOM view with the result calculations
@@ -87,11 +109,35 @@ const Result = (props) => {
         </div>
         <div>
           <ul className="result-top-right">
-            <li className="nav-item">Année</li>
+            <li
+              className={hoveredItem === "year" ? "active" : "nav-item"}
+              onClick={() => {
+                setTimeframe("year");
+                setHoveredItem("year");
+              }}
+            >
+              Année
+            </li>
 
-            <li className="nav-item">Mois</li>
+            <li
+              className={hoveredItem === "month" ? "active" : "nav-item"}
+              onClick={() => {
+                setTimeframe("month");
+                setHoveredItem("month");
+              }}
+            >
+              Mois
+            </li>
 
-            <li className="nav-item">Jour</li>
+            <li
+              className={hoveredItem === "day" ? "active" : "nav-item"}
+              onClick={() => {
+                setTimeframe("day");
+                setHoveredItem("day");
+              }}
+            >
+              Jour
+            </li>
           </ul>
         </div>
       </div>
