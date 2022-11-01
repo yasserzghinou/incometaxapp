@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import SalaryContext from "./SalaryContext";
+import { math, derivative, sin } from "mathjs";
 
 const Result = (props) => {
   const { value1, value2 } = useContext(SalaryContext);
@@ -11,9 +12,13 @@ const Result = (props) => {
   const [netSalary, setNetSalary] = useState(0);
   const [ir, setIr] = useState(0);
   const [fsalary, setFsalary] = useState("");
+  const [tmarginal, setTmarginal] = useState(0);
+  const [tmoyen, setTmoyen] = useState(0);
+
   const AMO = 0.0226;
 
-  //helper functions to calculate the tax & CNSS
+  //Helper Functions to calculate the tax & CNSS
+  // Tax calc function
   const taxCalc = (salary) => {
     if (salary < 30000) {
       setTax(0);
@@ -30,28 +35,48 @@ const Result = (props) => {
       setTax(Math.floor(salary * 0.38));
     }
   };
-
+  // CNSS calc function
   const cnssCalc = (salary) => {
     if (salary <= 72000) {
       setCnss(Math.floor(salary * 0.0452));
     } else setCnss(Math.floor(72000 * 0.0452));
   };
+  // AMO calc function
   const amoCalc = (salary) => setAmoresult(Math.floor(salary * AMO));
+  // IR calc function
   const irCalc = (salary) => setIr(Math.floor(tax + cnss + amoresult));
-
+  // Net Salary calc function
   const netSalaryCalc = (salary) => {
     setNetSalary(salary - ir);
-    // console.log(salary.toLocaleString("en-US"));
+
     setFsalary(netSalary.toLocaleString("en-US"));
   };
-  //useEffect hook used to update the DOM view with the result calculations
-  useEffect(() => {
-    // console.log("I rendered");
+  // Taux d'imposition marginal calc function
+  const tauxMarginal = (salary) => setTmarginal(18.1);
+  // console.log(ir.toString());
+  // console.log(
+  //   derivative(ir.toString() + "x", "x")
+  //     .compile()
+  //     .evaluate()
+  // );
+
+  // Taux d'imposition moyen calc function
+  const tauxMoyen = (salary) => setTmoyen(((ir / salary) * 100).toFixed(2));
+
+  // Main function to calculate all taxes using above helper functions
+  const runCalculations = (salary) => {
     taxCalc(salary);
     cnssCalc(salary);
     amoCalc(salary);
     irCalc(salary);
     netSalaryCalc(salary);
+    tauxMarginal(salary);
+    tauxMoyen(salary);
+  };
+
+  //useEffect hook used to update the DOM view with the result calculations
+  useEffect(() => {
+    runCalculations(salary);
   });
 
   return (
@@ -99,8 +124,8 @@ const Result = (props) => {
             <h4>- {ir} DHS</h4>
             <h3>{fsalary} DHS</h3>
             <hr class="solid-white"></hr>
-            <p className="result-subtext">11%</p>
-            <p className="result-subtext">18%</p>
+            <p className="result-subtext">{tmarginal}%</p>
+            <p className="result-subtext">{tmoyen}%</p>
           </div>
         </div>
         <div className="result-main-right">
