@@ -22,6 +22,22 @@ const Result = (props) => {
   const AMO = 0.0226;
   const dSalary = salary / 365;
   const mSalary = salary / 12;
+
+  const chartSalary = {
+    id: "Salaire Net (DHS)",
+    label: "Salaire Net",
+    value: netSalary,
+    color: "hsl(341, 70%, 50%)"
+  };
+
+  const chartIr = {
+    id: "Impôt (DHS)",
+    label: "Impôt",
+    value: ir,
+    color: "hsl(138, 70%, 50%)"
+  };
+
+  const chartData = [chartSalary, chartIr];
   //Helper Functions to calculate the tax & CNSS
   // Tax calc function
   const taxCalc = (salary) => {
@@ -176,22 +192,7 @@ const Result = (props) => {
           </div>
         </div>
         <div className="result-main-right">
-          <Pie
-            data={[
-              {
-                id: "Salaire Net",
-                label: "Salaire Net",
-                value: 94,
-                color: "hsl(341, 70%, 50%)"
-              },
-              {
-                id: "Impôt",
-                label: "Impôt",
-                value: 6,
-                color: "hsl(138, 70%, 50%)"
-              }
-            ]}
-          />
+          <Pie data={chartData} />
         </div>
       </div>
     </div>
